@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { BudgetService } from '../services/budget.service';
 import { CommonModule } from '@angular/common';
+import { EventEmitter, Output } from '@angular/core';
+
 
 @Component({
   selector: 'app-panel',
@@ -11,6 +13,8 @@ import { CommonModule } from '@angular/common';
   styleUrl: './panel.component.css'
 })
 export class PanelComponent {
+
+  @Output() totalWebCostChange = new EventEmitter<number>();
 
   form: FormGroup;
   totalWebCost: number = 0;
@@ -26,7 +30,9 @@ export class PanelComponent {
         values.pages,
         values.languages
       );
+      this.totalWebCostChange.emit(this.totalWebCost);
     });
+
   }
 
   increase(controlName: 'pages' | 'languages') {

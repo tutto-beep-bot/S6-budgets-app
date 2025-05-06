@@ -23,6 +23,11 @@ export class WelcomeComponent {
   services: Array<keyof typeof this.prices> = ['seo', 'ads', 'web'];
 
   total = signal(0);
+  panelTotal: number = 0;
+
+  handleTotalChange(newCost: number){
+    this.panelTotal = newCost;
+  }
 
   constructor(private formBuilder: FormBuilder) {
     this.form = this.formBuilder.group({
