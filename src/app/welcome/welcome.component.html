@@ -1,0 +1,22 @@
+<div class="container">
+    <h2>Aconsegueix la millor qualitat</h2>
+
+    <form [formGroup]="form">
+        <div class="service-box" *ngFor="let service of services">
+            <div class="info">
+                <h3> {{ service | titlecase }}</h3>
+                <p> {{ prices[service] }} €</p>
+            </div>
+        
+
+            <label>
+                <input type="checkbox" [formControlName]="service">
+                Afegir
+            </label>
+        </div>
+    </form>
+
+    <div class="total">
+        <strong>Preu Pressuposat:</strong> {{ total() }}
+    </div>
+</div>
