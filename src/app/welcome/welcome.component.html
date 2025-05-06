@@ -1,8 +1,9 @@
 <div class="container">
     <h2>Aconsegueix la millor qualitat</h2>
 
+    @for (service of services; track service) {
     <form [formGroup]="form">
-        <div class="service-box" *ngFor="let service of services">
+        <div class="service-box">
             <div class="info">
                 <h3> {{ service | titlecase }}</h3>
                 <p> {{ prices[service] }} €</p>
@@ -15,8 +16,15 @@
             </label>
         </div>
     </form>
-
+    }
     <div class="total">
         <strong>Preu Pressuposat:</strong> {{ total() }}
     </div>
 </div>
+
+@if (form.get('web')?.value) {
+<div class="panel-wrapper">
+    <app-panel></app-panel>
+</div>
+}
+  

@@ -1,10 +1,11 @@
-import { Component, Inject, signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { PanelComponent } from '../panel/panel.component';
 
 @Component({
   selector: 'app-welcome',
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, PanelComponent],
   standalone: true,
   templateUrl: './welcome.component.html',
   styleUrl: './welcome.component.css'
@@ -20,7 +21,7 @@ export class WelcomeComponent {
   };
 
   services: Array<keyof typeof this.prices> = ['seo', 'ads', 'web'];
-  
+
   total = signal(0);
 
   constructor(private formBuilder: FormBuilder) {

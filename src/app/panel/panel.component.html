@@ -1,0 +1,23 @@
+<div class="panel">
+  <div class="field">
+      <label>Nombre de pàgines</label>
+      <div class="stepper">
+        <button type="button" (click)="decrease('pages')">-</button>
+        <span>{{ form.get('pages')?.value }}</span>
+        <button type="button" (click)="increase('pages')">+</button>
+      </div>
+    </div>
+  
+    <div class="field">
+      <label>Nombre de llenguatges</label>
+      <div class="stepper">
+        <button type="button" (click)="decrease('languages')">-</button>
+        <span>{{ form.get('languages')?.value }}</span>
+        <button type="button" (click)="increase('languages')">+</button>
+      </div>
+    </div>
+  
+    <div class="result">
+      <p>Total Web Cost: {{ totalWebCost }} €</p>
+    </div>
+</div>
