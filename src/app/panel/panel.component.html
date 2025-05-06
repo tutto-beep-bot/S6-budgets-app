@@ -1,23 +1,65 @@
 <div class="panel">
   <div class="field">
-      <label>Nombre de pàgines</label>
+      <label>
+        <i 
+            class="bi bi-info-circle" 
+            role="button" 
+            data-bs-toggle="modal" 
+            data-bs-target="#pagesHelpModal"
+            title="Què és això?"
+        ></i>
+        Nombre de pàgines</label>
       <div class="stepper">
         <button type="button" (click)="decrease('pages')">-</button>
         <span>{{ form.get('pages')?.value }}</span>
         <button type="button" (click)="increase('pages')">+</button>
       </div>
     </div>
-  
+
     <div class="field">
-      <label>Nombre de llenguatges</label>
-      <div class="stepper">
-        <button type="button" (click)="decrease('languages')">-</button>
-        <span>{{ form.get('languages')?.value }}</span>
-        <button type="button" (click)="increase('languages')">+</button>
-      </div>
+        <label>
+          <i 
+            class="bi bi-info-circle" 
+            role="button" 
+            data-bs-toggle="modal" 
+            data-bs-target="#languageHelpModal"
+            title="Què és això?"
+        ></i>
+            Nombre de llenguatges</label>
+        <div class="stepper">
+            <button type="button" (click)="decrease('languages')">-</button>
+            <span>{{ form.get('languages')?.value }}</span>
+            <button type="button" (click)="increase('languages')">+</button>
+        </div>
     </div>
-  
-    <div class="result">
-      <p>Total Web Cost: {{ totalWebCost }} €</p>
+</div>
+
+<div class="modal fade" id="languageHelpModal" tabindex="-1" aria-labelledby="languageHelpModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="languageHelpModalLabel">Número de llenguatges</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tancar"></button>
+            </div>
+            <div class="modal-body">
+                Afegeix les llenguatges que que tindrà el teu projecte.<br />
+                El cost de cada llenguatge és de 30€.
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="pagesHelpModal" tabindex="-1" aria-labelledby="languageHelpModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="languageHelpModalLabel">Número de pàgines </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tancar"></button>
+            </div>
+            <div class="modal-body">
+                Afegeix tantes pàgines com tingui el teu projecte.
+                El cost de cada pàgine és de 30 €.
+            </div>
+        </div>
     </div>
 </div>

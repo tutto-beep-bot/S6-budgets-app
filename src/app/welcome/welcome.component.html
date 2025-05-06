@@ -17,14 +17,16 @@
         </div>
     </form>
     }
+    @if (form.get('web')?.value) {
+        <div class="panel-wrapper">
+            <app-panel></app-panel>
+        </div>
+        }
+
     <div class="total">
-        <strong>Preu Pressuposat:</strong> {{ total() }}
+        <strong>Preu Pressuposat: {{ total() }}</strong>
     </div>
 </div>
 
-@if (form.get('web')?.value) {
-<div class="panel-wrapper">
-    <app-panel></app-panel>
-</div>
-}
+
   
