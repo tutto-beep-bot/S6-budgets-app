@@ -6,6 +6,6 @@ import { Injectable } from '@angular/core';
 
 export class BudgetService {
   calculateBudget(pages: number, languages: number): number {
-    return (pages * languages * 30);
+    return (pages + languages - 2)  * 30;
   }
 }
