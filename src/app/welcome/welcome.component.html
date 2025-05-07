@@ -17,6 +17,7 @@
         </div>
     </form>
     }
+    
     @if (form.get('web')?.value) {
         <div class="panel-wrapper">
             <app-panel (totalWebCostChange)="handleTotalChange($event)"></app-panel>
