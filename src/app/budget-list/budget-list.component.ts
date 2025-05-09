@@ -11,11 +11,16 @@ import { BudgetService } from '../services/budget.service';
 export class BudgetListComponent {
 
   sortType = signal<'date' | 'price' | 'name'>('date');
+  searchTerm = signal('');
 
   constructor(private budgetService: BudgetService) {}
 
   budgets = computed(() => {
     const list = this.budgetService.getBudgets()();
+    const search = this.searchTerm().toLowerCase();
+
+    const filtered = list.filter(b => b.name.toLowerCase().includes(search));
+
     switch (this.sortType()) {
       case 'price':
         return [...list].sort((a, b) => b.total - a.total);
@@ -31,6 +36,11 @@ export class BudgetListComponent {
 
   setSort(type: 'date' | 'price' | 'name') {
     this.sortType.set(type);
+  }
+
+  updateSearch(event: Event){
+    const value = (event.target as HTMLInputElement).value;
+    this.searchTerm.set(value)
   }
 
 }

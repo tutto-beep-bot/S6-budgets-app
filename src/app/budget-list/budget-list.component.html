@@ -3,6 +3,16 @@
 
     @if (budgets().length > 0) {
         <div class="header-row">
+            <div class="search-container">
+                <input 
+                type="text"
+                [value]="searchTerm()"
+                (input)="updateSearch($event)"
+                aria-label="Buscar Client"
+                >
+                <span class="search-icon">🔍</span>
+            </div>
+
             <div class="sort-buttons">
                 <button (click)="setSort('date')">Data</button>
                 <button (click)="setSort('price')">Preu</button>
@@ -27,7 +37,7 @@
                         </ul>
                     </div>
                     <div class="budget-right">
-                        <p> <strong>Total: </strong>{{budget.total}}€</p>
+                        <p> <strong>Total: </strong>{{ budget.total }}€</p>
                     </div>
                 </div>
             }
