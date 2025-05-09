@@ -1,6 +1,4 @@
 <div class="container">
-    <h2>Aconsegueix la millor qualitat</h2>
-
     @for (service of services; track service) {
     <form [formGroup]="form">
         <div class="service-box">
@@ -17,17 +15,23 @@
         </div>
     </form>
     }
-    
+    <br>
     @if (form.get('web')?.value) {
         <div class="panel-wrapper">
             <app-panel (totalWebCostChange)="handleTotalChange($event)"></app-panel>
         </div>
         }
-
+    <br>
     <div class="total">
         <strong>Preu Pressuposat: {{ total() + panelTotal }}</strong>
     </div>
+    <br>
+    <div class="client-form">
+        <app-client-form (formSubmitted)="handleClientForm($event)"></app-client-form>
+    </div>
+    
 </div>
+
 
 
   

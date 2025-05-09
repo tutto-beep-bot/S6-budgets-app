@@ -1,0 +1,13 @@
+<div class="container">
+  <h3>Demanar Pressupost</h3>
+  <form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <input type="text" formControlName="name" placeholder="Nom">
+      <input type="tel" formControlName="phone" placeholder="Telèfon">
+      <input type="email" formControlName="email" placeholder="Correu electrònic">
+      <button type="submit">Sol-licitar pressupost</button>
+    </div>
+  </form>
+</div>
+<br>
+<app-budget-list></app-budget-list>

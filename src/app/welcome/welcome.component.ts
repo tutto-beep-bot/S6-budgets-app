@@ -2,10 +2,12 @@ import { Component, signal } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { PanelComponent } from '../panel/panel.component';
+import { BudgetService } from '../services/budget.service';
+import { ClientFormComponent } from '../client-form/client-form.component';
 
 @Component({
   selector: 'app-welcome',
-  imports: [ReactiveFormsModule, CommonModule, PanelComponent],
+  imports: [ReactiveFormsModule, CommonModule, PanelComponent, ClientFormComponent],
   standalone: true,
   templateUrl: './welcome.component.html',
   styleUrl: './welcome.component.css'
@@ -25,11 +27,8 @@ export class WelcomeComponent {
   total = signal(0);
   panelTotal: number = 0;
 
-  handleTotalChange(newCost: number){
-    this.panelTotal = newCost;
-  }
-
-  constructor(private formBuilder: FormBuilder) {
+  
+  constructor(private formBuilder: FormBuilder, private budgetService: BudgetService) {
     this.form = this.formBuilder.group({
       seo: [false],
       ads: [false],
@@ -44,4 +43,23 @@ export class WelcomeComponent {
       this.total.set(sum);
     });
   }
+
+  handleTotalChange(newCost: number){
+    this.panelTotal = newCost;
+  }
+
+  handleClientForm(clientData: {name: string; phone: string; email: string}){
+    const selectedServices = this.services.filter(s => this.form.get(s)?.value);
+
+    const newBudget = {
+      ...clientData,
+      services: selectedServices,
+      total: this.total() + this.panelTotal
+    }
+
+    this.budgetService.addBudget(newBudget);
+    this.form.reset();
+    this.panelTotal = 0;
+  }
+
 }
