@@ -1,15 +1,28 @@
 <div class="container">
     <h3>Pressupostos en curs:</h3>
     <br>
+
     @if (budgets().length > 0) {
     <div class="budget-list">
         @for (budget of budgets(); track budget){
             <div class="budget-card">
-                <h4>{{budget.name}}</h4>
-                <p> {{budget.phone}} </p>
-                <p> {{budget.email}}</p>
-                <p>{{budget.services.join(', ')}}</p>
-                <p> <strong>Total: </strong>{{budget.total}}€</p>
+                <div class="budget-left">
+                    <h4>{{budget.name}}</h4>
+                    <p> {{budget.email}}</p>
+                    <p> {{budget.phone}} </p>
+                </div>
+                <div class="budget-middle">
+                    <p><strong>Serveis contractats:</strong> <br></p>
+                    <ul>
+                        @for(service of budget.services; track service){
+                            <li>{{ service }}</li>
+                        }
+                    </ul>
+                </div>
+                <div class="budget-right">
+                    <p> <strong>Total: </strong>{{budget.total}}€</p>
+                </div>
+
             </div>
         }
     </div>
