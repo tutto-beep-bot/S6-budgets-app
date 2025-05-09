@@ -1,4 +1,5 @@
 import { Component, signal } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router'; 
 import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { PanelComponent } from '../panel/panel.component';
@@ -29,19 +30,79 @@ export class WelcomeComponent {
   panelTotal: number = 0;
 
   
-  constructor(private formBuilder: FormBuilder, private budgetService: BudgetService) {
+  // constructor(private formBuilder: FormBuilder, private budgetService: BudgetService, private router: Router, private route: ActivatedRoute) {
+  //   this.form = this.formBuilder.group({
+  //     seo: [false],
+  //     ads: [false],
+  //     web: [false],
+  //     pages: [1],
+  //     languages: [1]
+  //   });
+
+  //   this.form.valueChanges.subscribe(values => {
+  //     const sum = Object.entries(values)
+  //       .filter(([_, checked]) => checked)
+  //       .reduce((acc, [key]) => acc + this.prices[key as keyof typeof this.prices], 0);
+
+  //     this.total.set(sum);
+
+  //     const queryParams: any = {...values};
+
+  //     if(this.panelTotal > 0){
+  //       queryParams.pages = this.form.get('pages')?.value || 1;
+  //       queryParams.lang = this.form.get('languages')?.value || 1;
+  //     }
+
+  //     this.router.navigate([], {
+  //       relativeTo: this.route,
+  //       queryParams,
+  //       queryParamsHandling: 'merge'
+  //     })
+  //   });
+  // }
+
+  constructor(private formBuilder: FormBuilder, private budgetService: BudgetService, private router: Router, private route: ActivatedRoute) {
     this.form = this.formBuilder.group({
       seo: [false],
       ads: [false],
       web: [false],
+      pages: [1],
+      languages: [1]
     });
 
+    this.route.queryParams.subscribe(params => {
+      this.form.patchValue({
+        seo: params['seo'] === 'true',
+        ads: params['ads'] === 'true',
+        web: params['web'] === 'true',
+        pages: parseInt(params['pages'] || '1', 10),
+        languages: parseInt(params['lang'] || '1', 10)
+      })
+
+      const sum = Object.entries(this.form.value)
+      .filter(([key, val]) => this.services.includes(key as keyof typeof this.prices) && val)
+      .reduce((acc, [key]) => acc + this.prices[key as keyof typeof this.prices], 0)
+    })
+
     this.form.valueChanges.subscribe(values => {
-      const sum = Object.entries(values)
-        .filter(([_, checked]) => checked)
-        .reduce((acc, [key]) => acc + this.prices[key as keyof typeof this.prices], 0);
+      const sum = Object.entries(this.form.value)
+      .filter(([key, val]) => this.services.includes(key as keyof typeof this.prices) && val)
+      .reduce((acc, [key]) => acc + this.prices[key as keyof typeof this.prices], 0)
 
       this.total.set(sum);
+
+      const queryParams: any = {...values};
+
+      if(this.panelTotal > 0){
+        queryParams.pages = this.form.get('pages')?.value || 1;
+        queryParams.lang = this.form.get('languages')?.value || 1;
+      }
+
+      this.router.navigate([], {
+        relativeTo: this.route,
+        queryParams,
+        queryParamsHandling: 'merge'
+      })
     });
   }
 
