@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, computed, signal, Signal } from '@angular/core';
 import { BudgetService } from '../services/budget.service';
-import { Signal } from '@angular/core';
+
 
 @Component({
   selector: 'app-budget-list',
@@ -10,10 +10,27 @@ import { Signal } from '@angular/core';
 })
 export class BudgetListComponent {
 
-  budgets: Signal<any[]>;
+  sortType = signal<'date' | 'price' | 'name'>('date');
 
-  constructor (private budgetService: BudgetService) {
-    this.budgets = this.budgetService.getBudgets();
+  constructor(private budgetService: BudgetService) {}
+
+  budgets = computed(() => {
+    const list = this.budgetService.getBudgets()();
+    switch (this.sortType()) {
+      case 'price':
+        return [...list].sort((a, b) => b.total - a.total);
+      case 'name':
+        return [...list].sort((a, b) => a.name.localeCompare(b.name));
+      case 'date':
+      default:
+        return [...list].sort(
+          (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+        );
+    }
+  });
+
+  setSort(type: 'date' | 'price' | 'name') {
+    this.sortType.set(type);
   }
 
 }

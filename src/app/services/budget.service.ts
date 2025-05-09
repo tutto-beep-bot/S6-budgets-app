@@ -13,6 +13,7 @@ export class BudgetService {
     }
 
     addBudget(budget: any){
+        const withDate = { ...budget, date: new Date()};
         this.budgetList.update(current => [...current, budget]);
     }
 
