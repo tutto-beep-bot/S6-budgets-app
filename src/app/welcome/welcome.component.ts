@@ -29,37 +29,6 @@ export class WelcomeComponent {
   total = signal(0);
   panelTotal: number = 0;
 
-  
-  // constructor(private formBuilder: FormBuilder, private budgetService: BudgetService, private router: Router, private route: ActivatedRoute) {
-  //   this.form = this.formBuilder.group({
-  //     seo: [false],
-  //     ads: [false],
-  //     web: [false],
-  //     pages: [1],
-  //     languages: [1]
-  //   });
-
-  //   this.form.valueChanges.subscribe(values => {
-  //     const sum = Object.entries(values)
-  //       .filter(([_, checked]) => checked)
-  //       .reduce((acc, [key]) => acc + this.prices[key as keyof typeof this.prices], 0);
-
-  //     this.total.set(sum);
-
-  //     const queryParams: any = {...values};
-
-  //     if(this.panelTotal > 0){
-  //       queryParams.pages = this.form.get('pages')?.value || 1;
-  //       queryParams.lang = this.form.get('languages')?.value || 1;
-  //     }
-
-  //     this.router.navigate([], {
-  //       relativeTo: this.route,
-  //       queryParams,
-  //       queryParamsHandling: 'merge'
-  //     })
-  //   });
-  // }
 
   constructor(private formBuilder: FormBuilder, private budgetService: BudgetService, private router: Router, private route: ActivatedRoute) {
     this.form = this.formBuilder.group({

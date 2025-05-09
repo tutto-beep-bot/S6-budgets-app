@@ -17,9 +17,5 @@ export class BudgetService {
         this.budgetList.update(current => [...current, budget]);
     }
 
-    // getBudgets(){
-    //     return this.budgetList.asReadonly();
-    // }
-
     readonly budgets = this.budgetList.asReadonly();
 }
