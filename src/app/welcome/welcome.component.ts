@@ -4,10 +4,11 @@ import { CommonModule } from '@angular/common';
 import { PanelComponent } from '../panel/panel.component';
 import { BudgetService } from '../services/budget.service';
 import { ClientFormComponent } from '../client-form/client-form.component';
+import { BudgetListComponent } from '../budget-list/budget-list.component';
 
 @Component({
   selector: 'app-welcome',
-  imports: [ReactiveFormsModule, CommonModule, PanelComponent, ClientFormComponent],
+  imports: [ReactiveFormsModule, CommonModule, PanelComponent, ClientFormComponent, BudgetListComponent],
   standalone: true,
   templateUrl: './welcome.component.html',
   styleUrl: './welcome.component.css'

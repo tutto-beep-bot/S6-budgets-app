@@ -3,19 +3,25 @@
 
     @if (budgets().length > 0) {
         <div class="header-row">
-            <div class="search-container">
-                <input 
+            <div class="search-container" [class.expanded]="isSearchOpen()">
+                @if (isSearchOpen()) {
+                <input
                 type="text"
                 [value]="searchTerm()"
                 (input)="updateSearch($event)"
-                aria-label="Buscar Client"
+                [class.visible]="isSearchOpen()"
+                class="search-input"
+                (blur)="toggleSearch()"
                 >
-                <span class="search-icon">🔍</span>
+                }
+                <button type="button" class="search-button" (click)="toggleSearch()">
+                    🔍
+                </button>
             </div>
 
             <div class="sort-buttons">
                 <button (click)="setSort('date')">Data</button>
-                <button (click)="setSort('price')">Preu</button>
+                <button (click)="setSort('price')">Import</button>
                 <button (click)="setSort('name')">Nom</button>
             </div>
         </div>

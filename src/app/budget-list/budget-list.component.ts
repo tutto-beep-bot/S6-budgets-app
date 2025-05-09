@@ -12,23 +12,25 @@ export class BudgetListComponent {
 
   sortType = signal<'date' | 'price' | 'name'>('date');
   searchTerm = signal('');
+  isSearchOpen = signal(false);
 
   constructor(private budgetService: BudgetService) {}
 
   budgets = computed(() => {
-    const list = this.budgetService.getBudgets()();
+    const list = this.budgetService.budgets();
     const search = this.searchTerm().toLowerCase();
-
     const filtered = list.filter(b => b.name.toLowerCase().includes(search));
-
+  
+    console.log('Filtrado: ', search);
+  
     switch (this.sortType()) {
       case 'price':
-        return [...list].sort((a, b) => b.total - a.total);
+        return [...filtered].sort((a, b) => b.total - a.total);
       case 'name':
-        return [...list].sort((a, b) => a.name.localeCompare(b.name));
+        return [...filtered].sort((a, b) => a.name.localeCompare(b.name));
       case 'date':
       default:
-        return [...list].sort(
+        return [...filtered].sort(
           (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
         );
     }
@@ -39,8 +41,12 @@ export class BudgetListComponent {
   }
 
   updateSearch(event: Event){
-    const value = (event.target as HTMLInputElement).value;
-    this.searchTerm.set(value)
+    const input = event.target as HTMLInputElement;
+    this.searchTerm.set(input.value)
+  }
+
+  toggleSearch() {
+    this.isSearchOpen.update(open => !open)
   }
 
 }

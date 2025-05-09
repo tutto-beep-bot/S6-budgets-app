@@ -1,10 +1,9 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { EmailValidator, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { BudgetListComponent } from '../budget-list/budget-list.component';
 
 @Component({
   selector: 'app-client-form',
-  imports: [ReactiveFormsModule, BudgetListComponent],
+  imports: [ReactiveFormsModule],
   standalone: true,
   templateUrl: './client-form.component.html',
   styleUrl: './client-form.component.css'
