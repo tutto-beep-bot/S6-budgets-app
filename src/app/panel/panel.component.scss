@@ -1,0 +1,62 @@
+$box-radius: 10px;
+$shadow: 0 8px 10px rgba(0, 0, 0, 0.05);
+$primary-color: #47d17c;
+$border-color: #eeeeee;
+$text-muted: #666666;
+
+@use 'sass:color';
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1rem;
+
+  .field {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+
+    label {
+      font-size: 0.9rem;
+      color: $text-muted;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .stepper {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+
+      button {
+        width: 32px;
+        height: 32px;
+        border: 1px solid $border-color;
+        background-color: #fff;
+        font-weight: bold;
+        font-size: 1rem;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+
+        &:hover {
+          background-color: color.adjust($primary-color, $lightness: 40%);
+        }
+      }
+
+      span {
+        min-width: 36px;
+        text-align: center;
+        font-size: 1rem;
+        font-weight: 500;
+        padding: 0.25rem 0.5rem;
+        border: 1px solid $border-color;
+        border-radius: 6px;
+        background-color: #f9f9f9;
+      }
+    }
+  }
+}

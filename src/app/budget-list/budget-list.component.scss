@@ -11,7 +11,7 @@ $primary-color: #47d17c;
 
 .container {
   max-width: $max-width;
-  margin: 3rem auto 0;
+  margin: 2rem auto;
   padding: 2rem;
   background-color: transparent;
 
@@ -84,7 +84,7 @@ $primary-color: #47d17c;
       font-size: 0.85rem;
 
       &:hover {
-        background: color.adjust($border-color, $lightness: -10%);
+        background: color.adjust($border-color, $lightness: 10%);
       }
     }
   }
