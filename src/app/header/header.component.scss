@@ -1,0 +1,26 @@
+$bg-color: #ffffff;
+$border-color: #eeeeee;
+$text-muted: #666666;
+$box-radius: 10px;
+$shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+$padding: 1.5rem 2rem;
+$max-width: 800px;
+
+.header-banner {
+  width: 100%;
+  padding: 4rem 4rem;
+  text-align: center;
+  background: linear-gradient(135deg, #e6b274, #b4e780);
+  border-radius: $box-radius;
+  box-shadow: $shadow;
+  margin-bottom: 2rem;
+  
+
+  h1 {
+    font-size: 2rem;
+    font-family: 'montserrat', sans-serif;
+    font-weight: bold;
+    color: #222;
+    margin: 0;
+  }
+}
