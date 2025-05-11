@@ -27,9 +27,15 @@ export class WelcomeComponent {
 
   services: Array<keyof typeof this.prices> = ['seo', 'ads', 'web'];
 
+  descriptions = {
+    seo: "Programació d'una web responsive completa",
+    ads: "Campanyes de publicitat online",
+    web: "Desenvolupament web a mida"
+  }
+
   total = signal(0);
-  showWebDetails = signal(false);
   panelTotal: number = 0;
+  showWebDetails = signal(false);
 
 
   constructor(private formBuilder: FormBuilder, private budgetService: BudgetService, private router: Router, private route: ActivatedRoute) {
@@ -61,7 +67,7 @@ export class WelcomeComponent {
       .reduce((acc, [key]) => acc + this.prices[key as keyof typeof this.prices], 0)
 
       this.total.set(sum);
-      this.showWebDetails.set(values.web)
+      this.showWebDetails.set(values.seo || values.ads || values.web)
 
       const queryParams: any = {...values};
 

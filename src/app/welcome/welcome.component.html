@@ -7,7 +7,8 @@
                 <div class="top-row">
                 <div class="info">
                     <div class="left-info-box"> 
-                        <h3> {{ service | titlecase }}</h3>
+                        <h2> {{ service | titlecase }}</h2>
+                        <p>{{ descriptions[service] }}</p>
                     </div>
                     <div class="middle-info-box">
                         <p> <strong>{{ prices[service] }} €</strong></p>
@@ -33,7 +34,6 @@
     <div class="total">
         <strong>Preu Pressuposat: {{ total() + panelTotal }}</strong>
     </div>
-    <br>
     @if (showWebDetails()) {
     <div class="client-form">
         <app-client-form (formSubmitted)="handleClientForm($event)"></app-client-form>
