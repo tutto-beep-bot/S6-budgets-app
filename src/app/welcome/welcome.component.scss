@@ -27,11 +27,11 @@ $max-width: 1100px;
   justify-content: space-between;
   gap: 1rem;
   margin-bottom: 0.8rem;
-  height: 9rem;
+  min-height: 9rem;
 
 
     &.selected {
-        border: 2px solid #47d17c !important;
+        border: 2px solid #77e9a2 !important;
         box-shadow: 0 0 0 3px rgba(71, 209, 124, 0.2)!important;
     }
 
