@@ -6,7 +6,7 @@ import { BudgetService } from '../services/budget.service';
   selector: 'app-budget-list',
   imports: [],
   templateUrl: './budget-list.component.html',
-  styleUrl: './budget-list.component.css'
+  styleUrl: './budget-list.component.scss'
 })
 export class BudgetListComponent {
 

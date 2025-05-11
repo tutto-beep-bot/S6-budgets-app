@@ -10,7 +10,7 @@ import { EventEmitter, Output } from '@angular/core';
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './panel.component.html',
-  styleUrl: './panel.component.css'
+  styleUrl: './panel.component.scss'
 })
 export class PanelComponent {
 

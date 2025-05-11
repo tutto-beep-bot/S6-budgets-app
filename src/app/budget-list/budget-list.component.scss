@@ -1,0 +1,146 @@
+$bg-color: #ffffff;
+$border-color: #eeeeee;
+$text-muted: #666666;
+$box-radius: 10px;
+$shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
+$padding: 1.5rem 2rem;
+$max-width: 1100px;
+$primary-color: #47d17c;
+
+@use 'sass:color';
+
+.container {
+  max-width: $max-width;
+  margin: 3rem auto 0;
+  padding: 2rem;
+  background-color: transparent;
+
+  h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  &::before {
+    content: '';
+    display: block;
+    border-top: 1px dashed $border-color;
+    margin-bottom: 2rem;
+  }
+}
+
+.header-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+
+  .button-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    &.expanded {
+      .search-input {
+        width: 200px;
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+
+    .search-input {
+      width: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      padding: 0.4rem 0.6rem;
+      border: 1px solid $border-color;
+      border-radius: $box-radius;
+      font-size: 0.9rem;
+    }
+
+    .search-button {
+      background: none;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+  }
+
+  .sort-buttons {
+    display: flex;
+    gap: 0.5rem;
+
+    button {
+      padding: 0.4rem 0.8rem;
+      border: 1px solid $border-color;
+      border-radius: $box-radius;
+      background: $bg-color;
+      cursor: pointer;
+      font-size: 0.85rem;
+
+      &:hover {
+        background: color.adjust($border-color, $lightness: -10%);
+      }
+    }
+  }
+}
+
+.budget-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.budget-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: $padding;
+  background-color: $bg-color;
+  border-radius: $box-radius;
+  box-shadow: $shadow;
+
+  h4 {
+    margin: 0;
+  }
+
+  p {
+    margin: 0.2rem 0;
+    color: $text-muted;
+    font-size: 0.95rem;
+  }
+
+  ul {
+    padding-left: 1rem;
+    margin: 0.5rem 0 0;
+    li {
+      font-size: 0.9rem;
+      color: $text-muted;
+    }
+  }
+
+  .budget-left,
+  .budget-middle,
+  .budget-right {
+    flex: 1;
+  }
+
+  .budget-right {
+    text-align: right;
+    font-size: x-large;
+
+    .budget-total{
+      font-size: xx-large;
+    }
+
+    strong {
+      font-size: 1.1rem;
+      color: black;
+    }
+  }
+}
