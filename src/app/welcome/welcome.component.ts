@@ -13,7 +13,7 @@ import { HeaderComponent } from '../header/header.component';
   imports: [ReactiveFormsModule, CommonModule, PanelComponent, ClientFormComponent, BudgetListComponent, HeaderComponent],
   standalone: true,
   templateUrl: './welcome.component.html',
-  styleUrl: './welcome.component.css'
+  styleUrl: './welcome.component.scss'
 })
 
 export class WelcomeComponent {
@@ -28,6 +28,7 @@ export class WelcomeComponent {
   services: Array<keyof typeof this.prices> = ['seo', 'ads', 'web'];
 
   total = signal(0);
+  showWebDetails = signal(false);
   panelTotal: number = 0;
 
 
@@ -60,6 +61,7 @@ export class WelcomeComponent {
       .reduce((acc, [key]) => acc + this.prices[key as keyof typeof this.prices], 0)
 
       this.total.set(sum);
+      this.showWebDetails.set(values.web)
 
       const queryParams: any = {...values};
 

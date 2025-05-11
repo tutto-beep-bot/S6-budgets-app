@@ -1,36 +1,44 @@
 <app-header></app-header>
 
 <div class="container">
-    @for (service of services; track service) {
     <form [formGroup]="form">
-        <div class="service-box">
-            <div class="info">
-                <h3> {{ service | titlecase }}</h3>
-                <p> {{ prices[service] }} €</p>
-            </div>
-        
+        @for (service of services; track service) {
+            <div class="service-box" [class.selected]="form.get(service)?.value">
+                <div class="top-row">
+                <div class="info">
+                    <div class="left-info-box"> 
+                        <h3> {{ service | titlecase }}</h3>
+                    </div>
+                    <div class="middle-info-box">
+                        <p> <strong>{{ prices[service] }} €</strong></p>
+                    </div>
+                </div>
+            
 
-            <label>
-                <input type="checkbox" [formControlName]="service">
-                Afegir
-            </label>
-        </div>
-    </form>
-    }
-    <br>
-    @if (form.get('web')?.value) {
-        <div class="panel-wrapper">
-            <app-panel (totalWebCostChange)="handleTotalChange($event)"></app-panel>
-        </div>
+                <label>
+                    <input type="checkbox" [formControlName]="service">
+                    Afegir
+                </label>
+                </div>
+
+                @if (service === 'web' && form.get('web')?.value) {
+                    <div class="panel-wrapper">
+                        <app-panel (totalWebCostChange)="handleTotalChange($event)"></app-panel>
+                    </div>
+                }
+            </div>
         }
+    </form>
     <br>
     <div class="total">
         <strong>Preu Pressuposat: {{ total() + panelTotal }}</strong>
     </div>
     <br>
+    @if (showWebDetails()) {
     <div class="client-form">
         <app-client-form (formSubmitted)="handleClientForm($event)"></app-client-form>
     </div>
+    }
     <app-budget-list></app-budget-list>
     
 </div>
