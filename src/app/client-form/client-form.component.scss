@@ -1,10 +1,10 @@
 $bg-color: #ffffff;
 $border-color: #eeeeee;
 $text-muted: #666666;
-$box-radius: 10px;
+$box-radius: 12px;
 $shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
-$padding: 1.5rem 2rem;
-$max-width: 800px;
+$padding: 2rem;
+$max-width: 1100px;
 $primary-color: #47d17c;
 
 @use 'sass:color';
@@ -28,11 +28,12 @@ $primary-color: #47d17c;
 
   .form-group {
     display: flex;
+    align-items: center;
     gap: 0.75rem;
 
     input {
       flex: 1;
-      padding: 0.5rem 0.75rem;
+      padding: 0.75rem 1rem;
       border: 1px solid $border-color;
       border-radius: $box-radius;
       font-size: 1rem;
@@ -45,11 +46,13 @@ $primary-color: #47d17c;
     }
 
     button {
-      padding: 0.5rem 1rem;
+      padding: 0.75rem 1.25rem;
       border: none;
       background-color: $primary-color;
       color: white;
       font-weight: 600;
+      font-size: 0.95rem;
+      white-space: nowrap;
       border-radius: $box-radius;
       cursor: pointer;
       transition: background-color 0.2s ease;

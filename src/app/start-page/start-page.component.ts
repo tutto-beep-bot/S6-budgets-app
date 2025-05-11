@@ -5,7 +5,7 @@ import { RouterModule, Router } from '@angular/router'
   selector: 'app-start-page',
   imports: [RouterModule],
   templateUrl: './start-page.component.html',
-  styleUrl: './start-page.component.css'
+  styleUrl: './start-page.component.scss'
 })
 export class StartPageComponent {
   constructor(private router: Router){}
