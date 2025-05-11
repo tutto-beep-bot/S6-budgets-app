@@ -1,0 +1,62 @@
+$bg-color: #ffffff;
+$border-color: #eeeeee;
+$text-muted: #666666;
+$box-radius: 10px;
+$shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
+$padding: 1.5rem 2rem;
+$max-width: 800px;
+$primary-color: #47d17c;
+
+@use 'sass:color';
+
+.container {
+  max-width: $max-width;
+  margin: 2rem auto;
+  padding: $padding;
+  background-color: $bg-color;
+  border-radius: $box-radius;
+  box-shadow: $shadow;
+
+  h3 {
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+  }
+
+  form {
+    width: 100%;
+  }
+
+  .form-group {
+    display: flex;
+    gap: 0.75rem;
+
+    input {
+      flex: 1;
+      padding: 0.5rem 0.75rem;
+      border: 1px solid $border-color;
+      border-radius: $box-radius;
+      font-size: 1rem;
+      color: $text-muted;
+      background: #f9f9f9;
+
+      &::placeholder {
+        color: #999;
+      }
+    }
+
+    button {
+      padding: 0.5rem 1rem;
+      border: none;
+      background-color: $primary-color;
+      color: white;
+      font-weight: 600;
+      border-radius: $box-radius;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+
+      &:hover {
+        background-color: color.adjust($primary-color, $lightness: -8%);
+      }
+    }
+  }
+}

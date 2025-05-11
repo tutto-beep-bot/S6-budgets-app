@@ -6,7 +6,7 @@ import { EmailValidator, FormBuilder, FormGroup, ReactiveFormsModule, Validators
   imports: [ReactiveFormsModule],
   standalone: true,
   templateUrl: './client-form.component.html',
-  styleUrl: './client-form.component.css'
+  styleUrl: './client-form.component.scss'
 })
 export class ClientFormComponent {
 
